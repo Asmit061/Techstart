@@ -36,6 +36,14 @@ app.use("/api", p);
 app.use("/upload", j);
 app.use("/host", y);
 
+// Making Build Folder as Public 
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 app.listen(port, () => {
   console.log(`Server started on port ${port}!`);
 });
+
